@@ -45,4 +45,51 @@ class PanierTest {
         // Affirmer
         assertFalse(panier.estVide());
     }
+
+    @Test
+    void articleNulDoitLeverException() {
+        // Arranger
+        Panier panier = new Panier();
+        // Affirmer
+        assertThrows(IllegalArgumentException.class,
+                () -> panier.ajouterArticle(null, 1));
+    }
+
+    @Test
+    void quantiteNulleDoitLeverException() {
+        // Arranger
+        Panier panier = new Panier();
+        Article article = new Article("REF-001", "Stylo", 1.50);
+        // Affirmer
+        assertThrows(IllegalArgumentException.class,
+                () -> panier.ajouterArticle(article, 0));
+    }
+
+    @Test
+    void quantiteNegativeDoitLeverException() {
+        // Arranger
+        Panier panier = new Panier();
+        Article article = new Article("REF-001", "Stylo", 1.50);
+        // Affirmer
+        assertThrows(IllegalArgumentException.class,
+                () -> panier.ajouterArticle(article, -3));
+    }
+
+    @Test
+    void codeReductionVideDoitLeverException() {
+        // Arranger
+        Panier panier = new Panier();
+        // Affirmer
+        assertThrows(IllegalArgumentException.class,
+                () -> panier.appliquerCodeReduction(""));
+    }
+
+    @Test
+    void codeReductionNulDoitLeverException() {
+        // Arranger
+        Panier panier = new Panier();
+        // Affirmer
+        assertThrows(IllegalArgumentException.class,
+                () -> panier.appliquerCodeReduction(null));
+    }
 }
