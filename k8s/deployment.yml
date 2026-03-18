@@ -6,7 +6,7 @@ metadata:
   labels:
     app: boutique
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       app: boutique
@@ -17,7 +17,8 @@ spec:
     spec:
       containers:
       - name: boutique
-        image: ghcr.io/bno0o/tests-unitaires-avec-junit-5:e02649c7319a54de797aed356d527d515dc04ae6
+        image: ghcr.io/bno0o/tests-unitaires-avec-junit-5:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 8080
         envFrom:
